@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="hls_test" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Q0c-5D-Lpl">
+                                <rect key="frame" x="159" y="36" width="200" height="88"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5UQ-kE-5qQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Spx-Vy-Hq5"/>
+                                        </constraints>
+                                        <state key="normal" title="set: speak video"/>
+                                        <connections>
+                                            <action selector="resetToSpeakVideoButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="HjX-Mt-NeF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yoX-if-TTj">
+                                        <rect key="frame" x="0.0" y="48" width="200" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Gpc-gz-8LJ"/>
+                                        </constraints>
+                                        <state key="normal" title="set: apple video"/>
+                                        <connections>
+                                            <action selector="resetToAppleVideoButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="hH3-PN-Mzh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="QHc-FC-sC9"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVg-qn-lMk">
+                                <rect key="frame" x="147.5" y="571" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="VqX-Cz-RNB"/>
+                                    <constraint firstAttribute="width" constant="80" id="nAa-YW-CpT"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="playbackButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="VgD-Qe-pqG"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="yJh-5j-UxU">
+                                <rect key="frame" x="47" y="498" width="281" height="57"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Playback debug label&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wg0-Kd-cSb">
+                                        <rect key="frame" x="0.0" y="0.0" width="281" height="20.5"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Network debug label&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUA-MC-wFg">
+                                        <rect key="frame" x="0.0" y="36.5" width="281" height="20.5"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iLt-xC-ANT">
+                                <rect key="frame" x="177.5" y="333.5" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="yJh-5j-UxU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3e1-fI-7aM"/>
+                            <constraint firstItem="Q0c-5D-Lpl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="5z2-Fi-4vO"/>
+                            <constraint firstItem="yJh-5j-UxU" firstAttribute="bottom" secondItem="CVg-qn-lMk" secondAttribute="top" constant="-16" id="EcE-BH-7Lg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Q0c-5D-Lpl" secondAttribute="trailing" constant="16" id="Hok-hI-cTy"/>
+                            <constraint firstItem="iLt-xC-ANT" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aCW-LE-NdL"/>
+                            <constraint firstItem="yJh-5j-UxU" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="hDi-29-Mxg"/>
+                            <constraint firstItem="iLt-xC-ANT" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="r7J-MP-Kql"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CVg-qn-lMk" secondAttribute="bottom" constant="16" id="ur4-eL-pFv"/>
+                            <constraint firstItem="CVg-qn-lMk" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ydp-ik-Rho"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="debugStackView" destination="yJh-5j-UxU" id="O3c-IC-Drv"/>
+                        <outlet property="loadingView" destination="iLt-xC-ANT" id="vZG-XP-Q6y"/>
+                        <outlet property="networkDebugLabel" destination="sUA-MC-wFg" id="rel-hH-tG3"/>
+                        <outlet property="playbackButton" destination="CVg-qn-lMk" id="MdQ-EI-Txi"/>
+                        <outlet property="playbackDebugLabel" destination="wg0-Kd-cSb" id="DH6-6B-PTY"/>
+                        <outlet property="resetAppleButton" destination="yoX-if-TTj" id="ekS-8k-6Nn"/>
+                        <outlet property="resetSpeakButton" destination="5UQ-kE-5qQ" id="Kip-bw-r1r"/>
+                        <outlet property="resetStackView" destination="Q0c-5D-Lpl" id="6kE-Ii-E2B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
