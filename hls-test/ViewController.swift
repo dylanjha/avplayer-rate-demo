@@ -14,8 +14,10 @@ class ViewController: UIViewController {
     
     // MARK: - Constants
     
-    private let rate: Float = 1.5
-    
+    private let rate: Float = 1.25
+
+    private let speakVideoPath = "https://d34af8cfq8hdgo.cloudfront.net/test/aws-watermark/l1_d0_vl_2.m3u8"
+    private let expName = "speak source"
 //    private let speakVideoPath = "https://stream.mux.com/idquf6N83PgEPID02peQ4aPx3L02YjxAxW.m3u8"
 //    private let expName = "m3u8"
 //    private let speakVideoPath = "https://stream.mux.com/idquf6N83PgEPID02peQ4aPx3L02YjxAxW/low.mp4"
