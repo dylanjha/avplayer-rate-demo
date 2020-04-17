@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-hls-test/Pods-hls-test-frameworks.sh
+${PODS_ROOT}/Mux-Stats-AVPlayer/Frameworks/iOS/fat/MUXSDKStats.framework
+${PODS_ROOT}/Mux-Stats-AVPlayer/Frameworks/iOS/fat/MUXSDKStats.framework.dSYM
+${PODS_ROOT}/Mux-Stats-Core/Frameworks/iOS/fat/MuxCore.framework

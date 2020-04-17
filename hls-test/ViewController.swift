@@ -8,14 +8,22 @@
 
 import UIKit
 import AVFoundation
+import MUXSDKStats
 
 class ViewController: UIViewController {
     
     // MARK: - Constants
     
-    private let rate: Float = 1.25
+    private let rate: Float = 1.5
     
-    private let speakVideoPath = "https://d34af8cfq8hdgo.cloudfront.net/test/aws-watermark/l1_d0_vl_2.m3u8"
+//    private let speakVideoPath = "https://stream.mux.com/idquf6N83PgEPID02peQ4aPx3L02YjxAxW.m3u8"
+//    private let expName = "m3u8"
+//    private let speakVideoPath = "https://stream.mux.com/idquf6N83PgEPID02peQ4aPx3L02YjxAxW/low.mp4"
+//    private let expName = "mp4 low"
+//    private let speakVideoPath = "https://stream.mux.com/idquf6N83PgEPID02peQ4aPx3L02YjxAxW/medium.mp4"
+//    private let expName = "mp4 med"
+//    private let speakVideoPath = "https://stream.mux.com/idquf6N83PgEPID02peQ4aPx3L02YjxAxW/high.mp4"
+//    private let expName = "mp4 high"
     private let appleVideoPath = "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8"
     
     // MARK: - Outlets
@@ -33,6 +41,7 @@ class ViewController: UIViewController {
     
     // MARK: - Private properties
     
+    let playName = "IOS_PLAYER"
     let player = AVPlayer()
     private lazy var playerLayer = AVPlayerLayer(player: nil)
     
@@ -67,6 +76,12 @@ class ViewController: UIViewController {
         playerLayer.player = player
         playerLayer.frame = view.bounds
         playerLayer.videoGravity = .resizeAspect
+        let playerData = MUXSDKCustomerPlayerData(environmentKey: "ENV_KEY")
+        let videoData = MUXSDKCustomerVideoData()
+        playerData!.experimentName = "Mux experiment: \(expName)"
+        videoData.videoTitle = "Speak test video gear \(expName)"
+        videoData.videoIsLive = false
+        MUXSDKStats.monitorAVPlayerLayer(playerLayer, withPlayerName: playName, playerData: playerData!, videoData: videoData)
         
         view.layer.addSublayer(playerLayer)
         
@@ -279,6 +294,7 @@ extension ViewController {
     
     private func play() {
         player.rate = rate
+        player.play()
         playbackButton.setTitle("pause", for: .normal)
     }
     
