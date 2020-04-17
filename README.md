@@ -1,8 +1,7 @@
-Speak TSI - Mar 11, 2019
-Title:
-AVPlayer HLS streams desynchronize audio & video when playback rate is not 1.0 and player switches quality streams
+# AVPlayer HLS streams desynchronize audio & video when playback rate is not 1.0 and player switches quality streams
 
 Description:
+
 We’re using AVPlayer to stream HLS videos with several video quality variants. When we set playback rate to 1.25, 1.5, 0.75 (or anything that is not 1.0), and AVPlayer switches to a different variant stream, the player drops audio for 1-10 seconds and desyncs audio and video (video is ahead of audio). 
 
 When we pause playback and play again, it seems that the video is frozen in place while audio plays, until the audio track catches up to the video, upon which time the video resumes moving and both video and audio continue playing in sync.
