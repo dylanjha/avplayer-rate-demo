@@ -296,7 +296,6 @@ extension ViewController {
     
     private func play() {
         player.rate = rate
-        player.play()
         playbackButton.setTitle("pause", for: .normal)
     }
     
