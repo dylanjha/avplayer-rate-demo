@@ -1,30 +1,46 @@
-# AVPlayer HLS streams desynchronize audio & video when playback rate is not 1.0 and player switches quality streams
+# AVPlayer HLS streams desynchronize audio & video
 
-Description:
+Here's a screen recording of the bug: https://www.dropbox.com/s/0tr3kvl18lvrmww/AVPlayer-rate-sync-bug.mov?dl=0
 
-We’re using AVPlayer to stream HLS videos with several video quality variants. When we set playback rate to 1.25, 1.5, 0.75 (or anything that is not 1.0), and AVPlayer switches to a different variant stream, the player drops audio for 1-10 seconds and desyncs audio and video (video is ahead of audio). 
+## Bug
 
-When we pause playback and play again, it seems that the video is frozen in place while audio plays, until the audio track catches up to the video, upon which time the video resumes moving and both video and audio continue playing in sync.
+AVPlayer is streaming an HLS playlist that has multiple quality variants at a non 1.0 playback rate (1.25 in this example). This is what happens:
 
-This issue seems to be specifically associated with a change in variant stream coupled with playback at a non-1.0 rate. 
+  * Rendition changes
+  * Audio drops out for a few seconds
+  * Audio comes back but is out of sync with the video. (Video is ahead of the audio)
 
-- If the rate is 1.0, this never happens.
-- If the variant stream does not change, this issue never happens. 
-- If the issue happens and we play/pause as described previously, and the variant stream does not change again, then the issue never happens again.
+This demo app reproduces the issue.
 
+## Installation:
 
-Configuration:
-This happens on many different iPhone models in production and on both iOS 11 and iOS 12. It shouldn’t be hard to reproduce.
+Clone
 
-Steps to reproduce:
+```
+git clone git@github.com:dylanjha/avplayer-rate-demo.git
+```
 
-1. Open and build the sample project we attached to device.
-2. Tap the upper-right “Set: speak video” button
-3. Tap the “Play 1.25x” button to play at rate 1.25.
-4. Listen to the audio and wait for the video stream to visually switch to a higher quality. You have to wait until it changes, which is dependent on your network conditions.
-    1. Our provided video has 2 variant streams marked with Gear 1 and Gear 2.
-5. Right as the stream switches on screen, audio should drop out temporarily, and the video and audio are now no longer synced
-6. Press pause and look at the playTime label. When you press play, the playTime will jump back in time and audio will start playing, but the video will still be frozen. A short time later, the audio will catch up to the video and then they will both start playing in sync.
+## Open in XCode
 
-Note: also try pressing the “set apple video” button on the upper right to set the video again, and observe the issue again with an official Apple HLS stream.
+```
+open *.xcodeproj
+```
 
+## See the bug
+
+1. Build the sample app onto a test device
+2. Tap the upper-right "Set: speak video" button or "Set: apple video" button - these are two different HLS sources
+3. Tap "Play 1.5x" button to play at 1.5 playback rate
+4. Either wait for a rendition change or force a rendition change using a tool like [Network Link Conditioner](https://nshipster.com/network-link-conditioner/)
+5. When the rendition change happens audio will drop temporarily (a few seconds). When audio comes back the audio and video is out of sync
+
+Here's a screen recording that shows the bug. When the stream switches renditions from Gear 1 to Gear 3 the audio drops momentarily and then it's out of sync https://www.dropbox.com/s/0tr3kvl18lvrmww/AVPlayer-rate-sync-bug.mov?dl=0
+
+## Notes
+
+* If the playback rate is 1.0, the bug does not happen
+* If there is no rendition change, the bug does not happen
+* This seems to happen for any non-1.0 playback rate (0.75, 1.25, 1.5, etc).
+* This happens on any iPhone model that we tried and on iOS 11, 12 and 13
+
+The team at [Speak](https://www.usespeak.com/) first reported this issue to Apple in March 2019: See [Speak TSI](https://paper.dropbox.com/doc/Speak-TSI-Mar-11-2019--Ayk98HqcPkntxhO9gpzkVuNUAg-BKbR9RCUZXTWrI9PXGWdD)

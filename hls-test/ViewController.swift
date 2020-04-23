@@ -223,7 +223,7 @@ extension ViewController {
     private func updateReadyState() {
         if !readyForPlayback {
             readyForPlayback = true
-            print("AVPlayerItem ready, set video player state to ready.")
+            print("AVPlayerItem ready, set video player state to ready. Check canPlayFastForward: \(String(describing: player.currentItem?.canPlayFastForward))")
         }
     }
     
