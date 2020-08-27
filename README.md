@@ -1,6 +1,6 @@
 # AVPlayer HLS streams desynchronize audio & video
 
-Here's a screen recording of the bug: https://www.dropbox.com/s/0tr3kvl18lvrmww/AVPlayer-rate-sync-bug.mov?dl=0
+Here's a screen recording of the bug: https://www.dropbox.com/s/j807ublkxfb4v2c/AVPlayer-rate-sync-bug.mov?dl=0
 
 ## Bug
 
